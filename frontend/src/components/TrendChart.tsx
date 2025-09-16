@@ -14,10 +14,10 @@ const TrendChart: React.FC = () => {
   const maxValue = Math.max(...highRiskTrend, ...mediumRiskTrend);
 
   return (
-    <div className="bg-white dark:bg-black p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
+    <div className="bg-white dark:bg-pt-card p-6 rounded-lg shadow-sm border border-gray-200 dark:border-pt-secondary">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Risk Level Trends</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-pt-card-foreground">Risk Level Trends</h3>
           <p className="text-sm text-gray-600 dark:text-gray-400">Weekly progression of at-risk students</p>
         </div>
         <div className="flex items-center space-x-4">
@@ -42,7 +42,7 @@ const TrendChart: React.FC = () => {
               y1={50 + i * 40}
               x2="750"
               y2={50 + i * 40}
-              stroke={theme === 'dark' ? '#1f2937' : '#f3f4f6'}
+              stroke={theme === 'dark' ? '#111111' : '#f3f4f6'}
               strokeWidth="1"
             />
           ))}
@@ -88,7 +88,7 @@ const TrendChart: React.FC = () => {
               cy={210 - (value / maxValue) * 160}
               r="4"
               fill="#ef4444"
-              stroke={theme === 'dark' ? 'black' : 'white'}
+              stroke={theme === 'dark' ? '#111111' : 'white'}
               strokeWidth="2"
             />
           ))}
@@ -100,7 +100,7 @@ const TrendChart: React.FC = () => {
               cy={210 - (value / maxValue) * 160}
               r="4"
               fill="#eab308"
-              stroke={theme === 'dark' ? 'black' : 'white'}
+              stroke={theme === 'dark' ? '#111111' : 'white'}
               strokeWidth="2"
             />
           ))}

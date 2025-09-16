@@ -36,10 +36,10 @@ const RecentAlerts: React.FC<RecentAlertsProps> = ({ onViewStudent }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-black p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
+    <div className="bg-white dark:bg-pt-card p-6 rounded-lg shadow-sm border border-gray-200 dark:border-pt-secondary">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Alerts</h3>
-        <span className="bg-red-100 text-red-800 dark:bg-gray-900 dark:text-red-200 text-xs font-medium px-2.5 py-0.5 rounded-full">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-pt-card-foreground">Recent Alerts</h3>
+        <span className="bg-red-100 text-red-800 dark:bg-pt-secondary dark:text-red-200 text-xs font-medium px-2.5 py-0.5 rounded-full">
           {recentAlerts.length} Active
         </span>
       </div>
@@ -56,7 +56,7 @@ const RecentAlerts: React.FC<RecentAlertsProps> = ({ onViewStudent }) => {
             const colorClass = getAlertColor(alert.severity);
             
             return (
-              <div key={alert.id} className="border border-gray-200 dark:border-gray-800 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">
+              <div key={alert.id} className="border border-gray-200 dark:border-pt-secondary rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-pt-secondary transition-colors">
                 <div className="flex items-start space-x-3">
                   <div className={`p-2 rounded-lg ${colorClass}`}>
                     <Icon className="w-4 h-4" />
@@ -64,7 +64,7 @@ const RecentAlerts: React.FC<RecentAlertsProps> = ({ onViewStudent }) => {
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
-                      <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                      <p className="text-sm font-medium text-gray-900 dark:text-pt-card-foreground truncate">
                         {alert.title}
                       </p>
                       <span className={`px-2 py-1 text-xs rounded-full ${colorClass}`}>
@@ -96,7 +96,7 @@ const RecentAlerts: React.FC<RecentAlertsProps> = ({ onViewStudent }) => {
       </div>
 
       {recentAlerts.length > 0 && (
-        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-pt-secondary">
           <button className="w-full text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium">
             View All Alerts
           </button>

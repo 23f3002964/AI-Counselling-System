@@ -40,8 +40,8 @@ const RiskOverview: React.FC<RiskOverviewProps> = ({ onViewStudent }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-black p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Risk Level Distribution</h3>
+    <div className="bg-white dark:bg-pt-card p-6 rounded-lg shadow-sm border border-gray-200 dark:border-pt-secondary">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-pt-card-foreground mb-4">Risk Level Distribution</h3>
       
       <div className="space-y-4">
         {Object.entries(riskGroups).map(([level, studentList]) => {
@@ -50,11 +50,11 @@ const RiskOverview: React.FC<RiskOverviewProps> = ({ onViewStudent }) => {
           const iconColorClass = getRiskIconColor(level);
           
           return (
-            <div key={level} className="border dark:border-gray-800 rounded-lg p-4">
+            <div key={level} className="border dark:border-pt-secondary rounded-lg p-4">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center space-x-2">
                   <Icon className={`w-5 h-5 ${iconColorClass}`} />
-                  <span className="font-medium capitalize text-gray-900 dark:text-white">{level} Risk</span>
+                  <span className="font-medium capitalize text-gray-900 dark:text-pt-card-foreground">{level} Risk</span>
                   <span className={`px-2 py-1 text-xs rounded-full ${colorClass}`}>
                     {studentList.length} students
                   </span>
@@ -66,16 +66,16 @@ const RiskOverview: React.FC<RiskOverviewProps> = ({ onViewStudent }) => {
                   <div 
                     key={student.id}
                     onClick={() => onViewStudent(student.id)}
-                    className="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-900 rounded cursor-pointer"
+                    className="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-pt-secondary rounded cursor-pointer"
                   >
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-gray-200 dark:bg-pt-card rounded-full flex items-center justify-center">
                         <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
                           {student.name.split(' ').map(n => n[0]).join('').toUpperCase()}
                         </span>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-900 dark:text-white">{student.name}</p>
+                        <p className="text-sm font-medium text-gray-900 dark:text-pt-card-foreground">{student.name}</p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">Score: {student.riskScore}%</p>
                       </div>
                     </div>

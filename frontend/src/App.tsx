@@ -71,7 +71,7 @@ function AppContent() {
   };
 
   return (
-    <div className={`${theme} min-h-screen bg-white dark:bg-black`}>
+    <div className={`${theme} min-h-screen bg-gray-100 dark:bg-pt-background`}>
       <Header
         activeView={activeView}
         onViewChange={setActiveView}

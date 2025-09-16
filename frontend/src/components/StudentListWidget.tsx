@@ -100,7 +100,7 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
 
   if (loading) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-pt-card rounded-lg shadow-sm border border-gray-200 dark:border-pt-secondary p-6">
         <div className="flex items-center justify-center">
           <div className="text-gray-500 dark:text-gray-400">Loading student data...</div>
         </div>
@@ -110,7 +110,7 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
 
   if (error) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-pt-card rounded-lg shadow-sm border border-gray-200 dark:border-pt-secondary p-6">
         <div className="flex items-center justify-center">
           <div className="text-red-500">Error: {error}</div>
         </div>
@@ -119,14 +119,14 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
   }
 
   return (
-    <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
-      <div className="p-6 border-b border-gray-200 dark:border-gray-800">
+    <div className="bg-white dark:bg-pt-card rounded-lg shadow-sm border border-gray-200 dark:border-pt-secondary">
+      <div className="p-6 border-b border-gray-200 dark:border-pt-secondary">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Student Performance Dashboard</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-pt-card-foreground">Student Performance Dashboard</h3>
           </div>
-          <span className="bg-blue-100 text-blue-800 dark:bg-gray-900 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded-full">
+          <span className="bg-blue-100 text-blue-800 dark:bg-pt-secondary dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded-full">
             {students.length} Students
           </span>
         </div>
@@ -134,7 +134,7 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
 
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-50 dark:bg-gray-900">
+          <thead className="bg-gray-50 dark:bg-pt-secondary">
             <tr>
               {tableColumns.map((column) => (
                 <th
@@ -145,7 +145,7 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
                     {column.sortable ? (
                       <button
                         onClick={() => handleSort(column.key)}
-                        className="flex items-center space-x-1 hover:text-gray-700 dark:hover:text-gray-200"
+                        className="flex items-center space-x-1 hover:text-gray-700 dark:hover:text-pt-foreground"
                       >
                         <span>{column.label}</span>
                         <ArrowUpDown className="w-3 h-3" />
@@ -158,12 +158,12 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
               ))}
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-800">
+          <tbody className="bg-white dark:bg-pt-card divide-y divide-gray-200 dark:divide-pt-secondary">
             {students.map((student) => (
               <tr
                 key={student.id}
                 onClick={() => onViewStudent(student.id)}
-                className="hover:bg-gray-50 dark:hover:bg-gray-900 cursor-pointer transition-colors"
+                className="hover:bg-gray-50 dark:hover:bg-pt-secondary cursor-pointer transition-colors"
               >
                 {tableColumns.map((column) => {
                   const value = (student as any)[column.key]; // Type assertion to fix the indexing issue
@@ -174,13 +174,13 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
                     <td key={column.key} className="px-4 py-3 text-sm">
                       {column.key === 'name' && (
                         <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                          <div className="w-8 h-8 bg-gray-200 dark:bg-pt-card rounded-full flex items-center justify-center">
                             <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
                               {student.name.split(' ').map(n => n[0]).join('').toUpperCase()}
                             </span>
                           </div>
                           <div>
-                            <p className="font-medium text-gray-900 dark:text-white">{student.name}</p>
+                            <p className="font-medium text-gray-900 dark:text-pt-card-foreground">{student.name}</p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">{student.program}</p>
                           </div>
                         </div>
@@ -199,14 +199,14 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
                             className={`w-3 h-3 rounded-full ${getThresholdColor(value, column.key)}`}
                             title={`${column.label}: ${formatValue(value, column.key)}`}
                           ></div>
-                          <span className="text-gray-900 dark:text-white font-medium">
+                          <span className="text-gray-900 dark:text-pt-card-foreground font-medium">
                             {formatValue(value, column.key)}
                           </span>
                         </div>
                       )}
 
                       {!column.threshold && column.key !== 'name' && column.key !== 'riskLevel' && (
-                        <span className="text-gray-900 dark:text-white">{value}</span>
+                        <span className="text-gray-900 dark:text-pt-card-foreground">{value}</span>
                       )}
                     </td>
                   );
@@ -224,7 +224,7 @@ const StudentListWidget: React.FC<StudentListWidgetProps> = ({ onViewStudent }) 
         </div>
       )}
 
-      <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+      <div className="p-4 border-t border-gray-200 dark:border-pt-secondary bg-gray-50 dark:bg-pt-secondary">
         <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
